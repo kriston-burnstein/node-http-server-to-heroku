@@ -1,7 +1,10 @@
+//file system
 const fs = require('fs');
 const path = require('path');
 
-// Create folder
+// Create a folder called test using path.join()
+// mkdir is async by default, but there is a sync version
+// most cases we'll want to use the default async version
 // fs.mkdir(path.join(__dirname, '/test'), {}, err => {
 //   if (err) throw err;
 //   console.log('Folder created...');
@@ -15,7 +18,9 @@ const path = require('path');
 //     if (err) throw err;
 //     console.log('File written to...');
 
-//     // File append
+//     // Append to a file
+//     // writeFile with overwrite whatever is already in the file
+//     // to add more to a file, use appendFile
 //     fs.appendFile(
 //       path.join(__dirname, '/test', 'hello.txt'),
 //       ' I love Node.js',
@@ -27,13 +32,13 @@ const path = require('path');
 //   }
 // );
 
-// Read file
+// Read a file
 // fs.readFile(path.join(__dirname, '/test', 'hello.txt'), 'utf8', (err, data) => {
 //   if (err) throw err;
 //   console.log(data);
 // });
 
-// Rename file
+// Rename a file
 fs.rename(
   path.join(__dirname, '/test', 'hello.txt'),
   path.join(__dirname, '/test', 'helloworld.txt'),
@@ -42,10 +47,6 @@ fs.rename(
     console.log('File renamed...');
   }
 );
-
-
-
-
 
 
 // WRITE THE FOLLOWING USERS NAME IN  A FILE  AND THEN DISPLAY THEM
@@ -92,8 +93,6 @@ fs.mkdir(path.join(__dirname, "/data"), {}, err => {
     });
   });
 })
-
-
 
 
 // delete a folder
