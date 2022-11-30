@@ -1,3 +1,8 @@
+// Using a framework like express would make this much easier 
+// example: app.get('/about', cbFunc)
+// But here we are understanding how to load basic web pages without express
+// We'll use all core node modules
+
 const http = require("http");
 const path = require("path");
 const fs = require("fs");
@@ -74,18 +79,19 @@ const server = http.createServer((req, res) => {
           }
         );
       } else {
-        //  Some server error
+        //  If it's not ENOENT, then it's some server error
         res.writeHead(500);
         res.end(`Server Error: ${err.code}`);
       }
     } else {
-      // Success
+      // If no error, then it's Success
       res.writeHead(200, { "Content-Type": contentType });
       res.end(content, "utf8");
     }
   });
 });
 
-const PORT = process.env.PORT || 2122;
+const PORT = process.env.PORT || 2122; //look for the environment variable 1st
+                                       //'OR' localhost 2122
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
